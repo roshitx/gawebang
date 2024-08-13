@@ -7,7 +7,7 @@
     <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-10 flex flex-col gap-y-5">
-                
+
                 @if($errors->any())
                     @foreach($errors->all() as $error)
                         <div class="px-5 py-3 w-full rounded-3xl bg-red-500 text-white">
@@ -16,6 +16,7 @@
                     @endforeach
                 @endif
 
+                @forelse ($tools as $tool)
                 <div class="item-card flex flex-row gap-y-10 justify-between md:items-center">
                     <div class="flex flex-row items-center gap-x-3">
                         <img src="#" alt="" class="rounded-2xl object-cover w-[120px] h-[90px]">
@@ -23,8 +24,11 @@
                             <h3 class="text-indigo-950 text-xl font-bold">building lego html5</h3>
                             <p class="text-slate-500 text-sm">marketing</p>
                         </div>
-                    </div>  
+                    </div>
                 </div>
+                @empty
+                <p>Tidak ada data tools terbaru</p>
+                @endforelse
                 <hr class="my-5">
 
                 <h3 class="text-indigo-950 text-xl font-bold">Add Tools</h3>
@@ -34,7 +38,7 @@
 
                     <div>
                         <x-input-label for="tools" :value="__('tools')" />
-                        
+
                         <select name="tool_id" id="tool_id" class="py-3 rounded-lg pl-3 w-full border border-slate-300">
                             <option value="">Choose tools</option>
                         </select>
@@ -43,7 +47,7 @@
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
-            
+
                         <button type="submit" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                             Add Tool
                         </button>
@@ -72,7 +76,7 @@
                         </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
